@@ -15,7 +15,6 @@ class DetailsElements {
         this.elements.getTitleDetail().should('be.visible');
     }
     outOfTheDetail = () => {
-        inventoryComponents.elements.clickOnBackpack();
         this.elements.getBackToProductsButton().click();
     }
 }

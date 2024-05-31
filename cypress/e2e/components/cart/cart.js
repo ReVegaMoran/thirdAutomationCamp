@@ -6,6 +6,8 @@ class CartElements {
         getCheckoutButton: () => cy.get('#checkout'),
         getContinueShoppingButton: () => cy.get('#continue-shopping'),
         getRemoveButton: () => cy.get('button[data-test="remove-sauce-labs-backpack"]'),
+        getCartItemProductYourCart: () => cy.get('.cart_item_label]'),
+
     }
     buyWithoutAddingProducts = () => {
         globalComponents.elements.shoppingCartBadge().click();
@@ -19,6 +21,9 @@ class CartElements {
         globalComponents.elements.getMainBurgerButton().click()
         globalComponents.elements.getLogoutSiderbar().click()
         cy.url().should('include', '/');
+    }
+    validateQuantityOfProductsYourCart = () => {
+        this.elements.getCartItemProductYourCart().should('have.length', 4);
     }
 }
 

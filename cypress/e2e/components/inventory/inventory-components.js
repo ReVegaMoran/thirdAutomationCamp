@@ -1,13 +1,19 @@
+import { cartComponents } from "../cart/cart";
 import { globalComponents } from "../global-components/global-component";
 
 class InventoryElements {
 
     elements = {
         getTitleCards: () => cy.get('div[data-test= "inventory-item-name"]'),
-        getProductImage: () => cy.get('div[class="inventory_item_img"] img'),
+        getProductImageCards: () => cy.get('div[class="inventory_item_img"] img'),
         clickOnBackpack: () => cy.get('div[data-test= "inventory-item-name"]').contains(globalComponents.sauceLabsBackpack).click(),
         getButtonByIndex: () => cy.get('#add-to-cart-sauce-labs-backpack'),
         getAddToCartButtons: () => cy.get('button[data-test^="add-to-cart"]'),
+        getRemoveButtonsByText: () => cy.contains('button', 'Remove'),
+        getCartItemProduct: () => cy.get('.cart_item'),
+        getSubTitleCards: () => cy.get('.inventory_item_desc'),
+        getPriceCards: () => cy.get('.inventory_item_price'),
+        getFilterSelect: () => cy.get('.product_sort_container'),
     }
 
     selectOneProduct = () => {
@@ -24,9 +30,47 @@ class InventoryElements {
         this.elements.getTitleCards().contains(globalComponents.tShirtRed);
     }
 
+    validationOfProductsBySubTitle = () => {
+        this.elements.getSubTitleCards().should('have.length', 6).each(($card) => {
+            cy.wrap($card).invoke('text').should('not.be.empty');
+        });
+    }
+
+    validationOfProductsByPrice = () => {
+        this.elements.getPriceCards().should('have.length', 6).each(($card) => {
+            cy.wrap($card).invoke('text').should('match', /\d/);
+        });
+    }
+
+    validationOfProductsByButton = () => {
+        this.elements.getAddToCartButtons().should('have.length', 6).each(($button) => {
+            cy.wrap($button).invoke('text').should('not.be.empty');
+        });
+    }
+
     buyMoreThanThreeProducts = () => {
         this.selectRandomProducts();
         globalComponents.elements.shoppingCartBadge().click();
+        this.elements.getCartItemProduct().should('have.length', 4);
+    }
+
+    buyMoreThanThreeProductsAndMoveForward = () => {
+        this.selectRandomProducts();
+        globalComponents.elements.shoppingCartBadge().click();
+        this.elements.getCartItemProduct().should('have.length', 4);
+        cartComponents.elements.getCheckoutButton().click();
+    }
+
+    addAndRemoveProductsFromCart = () => {
+        this.selectRandomProducts();
+        this.removeProductsFromCart();
+    }
+
+    removeProductsFromCart = () => {
+        globalComponents.elements.shoppingCartBadge().click();
+        this.elements.getRemoveButtonsByText().each(($btn) => {
+            cy.wrap($btn).click();
+        });
     }
 
     validationOfProductsByImage = () => {
@@ -41,7 +85,7 @@ class InventoryElements {
         });
     }
 
-    // Método para seleccionar 4 productos de forma aleatoria y agregarlos al carrito
+    // Method to randomly select 4 products and add them to the cart
     selectRandomProducts = () => {
         this.elements.getAddToCartButtons().then(($buttons) => {
             const indexes = [];

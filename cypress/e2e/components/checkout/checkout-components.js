@@ -17,7 +17,8 @@ class CheckoutElements {
         getFinishButton: () => cy.get('#finish'),
         getCancelButton: () => cy.get('#cancel'),
         getBackToProductsButton: () => cy.get('#back-to-products'),
-        getThankYouText: () => cy.get('h2[data-test="complete-header"]').contains('Thank you for your order!')
+        getThankYouText: () => cy.get('h2[data-test="complete-header"]').contains('Thank you for your order!'),
+        getCartItemProduct: () => cy.get('.cart_item'),
     }
     checkoutWithoutData = () => {
         cartComponents.elements.getCheckoutButton().click();
@@ -31,6 +32,17 @@ class CheckoutElements {
         this.elements.getFirstNameFiel().type(faker.person.firstName());
         this.elements.getContinueButton().click();
         this.elements.getLastNameWarningMessage().should('be.visible');
+    }
+    checkoutInformation = () => {
+        cy.url().should('include', '/checkout-step-one.html');
+        this.elements.getFirstNameFiel().type(faker.person.firstName());
+        this.elements.getLastNameFiel().type(faker.person.lastName());
+        this.elements.getPostalCodeFiel().type(faker.location.zipCode());
+        this.elements.getContinueButton().click();
+    }
+
+    validateQuantityOfProductsYourCart = () => {
+        this.elements.getCartItemProduct().should('have.length', 4);
     }
     validFirstAndLastName = () => {
         cartComponents.elements.getCheckoutButton().click();

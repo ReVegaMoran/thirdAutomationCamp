@@ -1,6 +1,6 @@
 import { loginComponents } from "../components/login/login-components.js";
 
-describe('Casos de prueba automatizados para el formulario de login.', () => {
+describe('Create automated test cases for the login form.', () => {
     beforeEach(() => {
         cy.visit('/')
     });
@@ -14,7 +14,7 @@ describe('Casos de prueba automatizados para el formulario de login.', () => {
     it('Verify login with random username and correct password, ', () => {
         loginComponents.validPasswordRamdonUser();
     });
-    it('Verify login with a correct username and empty password field.', () => {
+    it('Verify login with a correct username and empty password fiel.', () => {
         loginComponents.validUserWithoutPassword();
     });
     it('Verify login with an empty username and correct password.', () => {
