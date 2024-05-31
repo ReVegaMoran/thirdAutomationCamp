@@ -40,4 +40,24 @@ describe('Create automated test cases for the catalog listing. (Cards, images, t
         detailsComponents.validationOfProductsDetailsByTitle();
         detailsComponents.outOfTheDetail();
     })
+    it('filtrar por az, se agregaron 4 productos y se cargaron al carro', () => {
+        loginComponents.validUser();
+        inventoryComponents.validationFilterAz();
+    })
+    it('filtrar por Za, se agregaron 4 productos y se cargaron al carro', () => {
+        loginComponents.validUser();
+        inventoryComponents.validationFilterZa();
+    })
+    it('filtrar por Za, se agregaron 4 productos y se cargaron al carro', () => {
+        loginComponents.validUser();
+        inventoryComponents.validationFilterZa();
+    })
+    it('filtrar por lohi, se agregaron 4 productos y se cargaron al carro', () => {
+        loginComponents.validUser();
+        inventoryComponents.validationFilterlohi();
+    })
+    it('filtrar por hilo, se agregaron 4 productos y se cargaron al carro', () => {
+        loginComponents.validUser();
+        inventoryComponents.validationFilterHilo();
+    })
 });

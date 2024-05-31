@@ -13,14 +13,37 @@ class InventoryElements {
         getCartItemProduct: () => cy.get('.cart_item'),
         getSubTitleCards: () => cy.get('.inventory_item_desc'),
         getPriceCards: () => cy.get('.inventory_item_price'),
-        getFilterSelect: () => cy.get('.product_sort_container'),
+        getFilterSelect: () => cy.get('[data-test="product-sort-container"]').should('exist'),
     }
 
     selectOneProduct = () => {
         this.elements.getButtonByIndex().click();
         globalComponents.elements.shoppingCartBadge().click();
     }
-
+    validationFilterAz = () => {
+        this.elements.getFilterSelect().should('be.visible');
+        this.elements.getFilterSelect().select('az');
+        this.selectRandomProducts();
+        globalComponents.elements.shoppingCartBadge().should('have.text', '4');
+    }
+    validationFilterZa = () => {
+        this.elements.getFilterSelect().should('be.visible');
+        this.elements.getFilterSelect().select('za');
+        this.selectRandomProducts();
+        globalComponents.elements.shoppingCartBadge().should('have.text', '4');
+    }
+    validationFilterlohi = () => {
+        this.elements.getFilterSelect().should('be.visible');
+        this.elements.getFilterSelect().select('lohi');
+        this.selectRandomProducts();
+        globalComponents.elements.shoppingCartBadge().should('have.text', '4');
+    }
+    validationFilterHilo = () => {
+        this.elements.getFilterSelect().should('be.visible');
+        this.elements.getFilterSelect().select('hilo');
+        this.selectRandomProducts();
+        globalComponents.elements.shoppingCartBadge().should('have.text', '4');
+    }
     validationOfProductsByTitle = () => {
         this.elements.getTitleCards().contains(globalComponents.sauceLabsBackpack);
         this.elements.getTitleCards().contains(globalComponents.sauceLabsBikeLight);
