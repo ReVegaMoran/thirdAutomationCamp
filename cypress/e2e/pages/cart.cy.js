@@ -23,7 +23,7 @@ describe('Create automated test cases for the shopping cart.', () => {
         inventoryComponents.selectOneProduct();
         cartComponents.removeProductFromCart();
     })
-    it('Should enter the catalog, select 4 products, click on the cart, proceed in Your Cart, complete Checkout: Your Information, view detail, finish purchase with the 4 products', () => {
+    it('Automate an end-to-end (E2E) flow where at least 3 items are purchased and the purchase is completed 100%.', () => {
         loginComponents.validUser();
         inventoryComponents.buyMoreThanThreeProductsAndMoveForward();
         checkoutComponents.randomCheckout();
