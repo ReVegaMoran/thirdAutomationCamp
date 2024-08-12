@@ -1,7 +1,7 @@
 {
     "name": "proyect-cypress",
     "version": "1.0.0",
-    "description": "",
+    "description": "This repository is dedicated to an automated testing initiative for the [SauceDemo](https://www.saucedemo.com/) web application, leveraging Cypress for implementation. The essence of the project lies in mimicking user interactions across a diverse array of scenarios within the application, with tests conducted using the viewport settings of an iPhone XR. Embracing the Page Object Model (POM) methodology, the structure of the tests is designed for streamlined maintenance and scalability.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,12 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "cypress": "^13.10.0"
+        "cypress": "^13.10.0",
+        "faker": "^6.6.6"
     },
     "devDependencies": {
-        "@faker-js/faker": "^8.4.1"
+        "@faker-js/faker": "^8.4.1",
+        "axe-core": "^4.10.0",
+        "cypress-axe": "^1.5.0"
     }
 }

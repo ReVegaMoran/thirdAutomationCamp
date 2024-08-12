@@ -1,17 +1,16 @@
 class GlobalElements {
 
-    constructor() {
-        this.sauceLabsBackpack = "Sauce Labs Backpack";
-        this.sauceLabsBikeLight = "Sauce Labs Bike Light";
-        this.sauceLabsBoltTShirt = "Sauce Labs Bolt T-Shirt";
-        this.sauceLabsFleeceJacket = "Sauce Labs Fleece Jacket";
-        this.sauceLabsOnesie = "Sauce Labs Onesie";
-        this.tShirtRed = "Test.allTheThings() T-Shirt (Red)";
-    }
     elements = {
-        getMainBurgerButton: () => cy.get('#react-burger-menu-btn'),
-        getLogoutSiderbar: () => cy.get('#logout_sidebar_link'),
-        shoppingCartBadge: () => cy.get('#shopping_cart_container'),
+        getNavBarMenuBurger: () => cy.get('.Navbar_nav-container-inner__SAqO_ > .Navbar_megamenu-cms__cBjN3 > .DesktopMegamenu_desktop-megamenu__SwitM > .top-2'),
+        getNavBarSpaceInTheHouse: () => cy.get('span[role="button"][tabindex="0"]').contains('ESPACIO DE LA CASA'),
+        getNavBarSpaceInTheHouseFurniture: () => cy.get(':nth-child(1) > .text_root__36_4Q > h5 > span > strong > a'),
+        getNavBarCar: () => cy.get('button[aria-label="Bag"]'),
+        getNavBarButtonFavorites: () => cy.get('button[aria-label="Tus favoritos"]')
+    }
+    elementsAnnouncements = {
+        getIconCloseSubscription: () => cy.get('.weblayer--box-web-push-subscription > .close'),
+        getIconCloseDiscountPromotion: () => cy.get('.exponea-banner-promo > .exponea-close > .exponea-close-cross'),
+        getIconCloseFreeShippingPromotion: () => cy.get('.exponea-banner-suscribir > .exponea-close')
     }
 }
 
