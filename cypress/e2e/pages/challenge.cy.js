@@ -4,10 +4,10 @@ import { cartComponents } from "../components/cart/cart-components.js"
 describe('Automated test cases for challenge', () => {
     beforeEach(() => {
         cy.visit('/')
-        cy.aceptarCookies();
+        cy.acceptCookies();
     });
     it('Verify The Entire Flow By Creating And Using A Random User Name And Password.', () => {
-        loginComponents.registerRamdonUser();
+        loginComponents.registerRandomUser();
         loginComponents.flow();
         loginComponents.buyProducts();
         cartComponents.registerNewAddress();

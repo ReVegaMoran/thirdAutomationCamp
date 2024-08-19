@@ -50,7 +50,7 @@ class LoginElements {
         getModalPasswordRecoveryInputEmail: () => cy.get('#email'),
         getModalPasswordRecoveryButtonPasswordRecovery: () => cy.contains('span', 'Recuperar contraseña')
     }
-    registerRamdonUser = () => {
+    registerRandomUser = () => {
         this.elementsLogin.getNavBarButtonUser().click();
         this.elementsLogin.getModalLoginLinkRegister().click();
         globalComponents.elementsAnnouncements.getIconCloseSubscription().should('be.visible').click();
@@ -65,9 +65,9 @@ class LoginElements {
         this.elementsRegister.getModalRegisterCheckboxAcceptTerms().should('be.visible').click();
         this.elementsRegister.getModalRegisterButtonRegister().should('be.visible').click();
         this.elementsRegister.getModalRegisterLoadingButtonRegister().should('be.visible');
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
     }
-    loginRamdonUser() {
+    loginRandomUser() {
         this.elementsLogin.getNavBarButtonUser().click();
         globalComponents.elementsAnnouncements.getIconCloseSubscription().should('be.visible').click();
         this.elementsLogin.getModalLoginInputEmail().type(testDataComponents.email);
@@ -112,12 +112,12 @@ class LoginElements {
         productDetailsComponents.elements.getButtonAddToCart().click();
         cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'validAddToCartRequest', 200);
         globalComponents.elements.getNavBarCar().click();
-        cy.incrementarProducto(0);
-        cy.incrementarProducto(1);
+        cy.addMoreProductItems(0);
+        cy.addMoreProductItems(1);
         cartComponents.elements.getButtonGoToCheckout().should('be.visible').click({ force: true });
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
         cartComponents.elements.getIconLoading().should('be.visible');
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
     }
     validationOfRequiredFieldsForUserRegistration() {
         this.elementsLogin.getNavBarButtonUser().click();
@@ -139,7 +139,7 @@ class LoginElements {
         globalComponents.elementsAnnouncements.getIconCloseSubscription().should('be.visible').click();
         this.elementsPasswordRecovery.getModalPasswordRecoveryInputEmail().type(testDataComponents.staticEmail);
         this.elementsPasswordRecovery.getModalPasswordRecoveryButtonPasswordRecovery().click();
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
     }
     validationOfRequiredFieldsForLogin() {
         this.elementsLogin.getNavBarButtonUser().click();

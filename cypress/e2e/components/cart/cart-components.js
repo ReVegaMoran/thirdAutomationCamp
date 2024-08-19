@@ -22,7 +22,7 @@ class CartElements {
     registerNewAddress = () => {
         cy.url().should('include', '/checkout');
         this.elements.getLinkAddAddress().click();
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
         this.elements.getModalInputNewAddressName().should('be.visible').type(testDataComponents.firstName);
         this.elements.getModalInputNewAddressLastName().should('be.visible').type(testDataComponents.lastName);
         this.elements.getModalInputNewAddressPhone().should('be.visible').type(testDataComponents.phoneNumber);
@@ -34,7 +34,7 @@ class CartElements {
         this.elements.getModalInputNewAddressCommune().should('be.visible').selectRandomOption();
         this.elements.getModalCheckboxSaveInAddressBook().scrollIntoView().click({ force: true });
         this.elements.getModalButtonSaveAddress().should('be.visible').click({ force: true });
-        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProdructstRequest', 200);
+        cy.interceptAndValidateRequest('POST', 'https://ecom-be.casaideas.cl/graphql', 'payProductsRequest', 200);
         this.elements.getButtonHomeDelivery().click();
         this.elements.getModalRadioButtonSelectShippingOption().click();
     }

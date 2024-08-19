@@ -4,10 +4,10 @@ Cypress.Commands.add('interceptAndValidateRequest', (method, url, alias, expecte
         expect(interception.response.statusCode).to.eq(expectedStatusCode);
     });
 });
-Cypress.Commands.add('incrementarProducto', (indiceProducto) => {
-    cy.get('button[aria-label="Add"]').eq(indiceProducto).click();
+Cypress.Commands.add('addMoreProductItems', (indexProduct) => {
+    cy.get('button[aria-label="Add"]').eq(indexProduct).click();
 });
-Cypress.Commands.add('aceptarCookies', () => {
+Cypress.Commands.add('acceptCookies', () => {
     cy.get('.FeatureBar_root__oNfaI > .Button_root__mZAHs', { timeout: 10000 })
         .then($button => {
             if ($button.is(':visible')) {
