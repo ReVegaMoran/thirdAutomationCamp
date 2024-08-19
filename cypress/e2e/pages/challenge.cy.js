@@ -1,21 +1,21 @@
 import { loginComponents } from "../components/login/login-components.js";
+import { cartComponents } from "../components/cart/cart-components.js"
 
-describe('Create automated test cases for the login form.', () => {
+describe('Automated test cases for challenge', () => {
     beforeEach(() => {
         cy.visit('/')
-        cy.aceptarCookies();
+        cy.acceptCookies();
     });
-    it('Verify valid site', () => {
-        loginComponents.validSite();
-    });
-    it('Verify new user registration with random data', () => {
-        loginComponents.validUser();
-    });
-    it('Verify login with the random username and password', () => {
-        loginComponents.loginUser();
-    });
-    it('Verify login with the random username and password', () => {
-        loginComponents.loginUser();
+    it('Verify The Entire Flow By Creating And Using A Random User Name And Password.', () => {
+        loginComponents.registerRandomUser();
         loginComponents.flow();
+        loginComponents.buyProducts();
+        cartComponents.registerNewAddress();
+    });
+    it('Verify The Entire Flow By Creating And Using A Static Username And Password.', () => {
+        loginComponents.loginWithUserStatic();
+        loginComponents.flow();
+        loginComponents.buyProducts();
+        cartComponents.registerNewAddress();
     });
 });

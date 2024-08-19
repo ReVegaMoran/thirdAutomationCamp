@@ -4,11 +4,23 @@ Cypress.Commands.add('interceptAndValidateRequest', (method, url, alias, expecte
         expect(interception.response.statusCode).to.eq(expectedStatusCode);
     });
 });
-Cypress.Commands.add('aceptarCookies', () => {
+Cypress.Commands.add('addMoreProductItems', (indexProduct) => {
+    cy.get('button[aria-label="Add"]').eq(indexProduct).click();
+});
+Cypress.Commands.add('acceptCookies', () => {
     cy.get('.FeatureBar_root__oNfaI > .Button_root__mZAHs', { timeout: 10000 })
         .then($button => {
             if ($button.is(':visible')) {
                 cy.wrap($button).click();
             }
+        });
+});
+Cypress.Commands.add('selectRandomOption', { prevSubject: 'element' }, (subject) => {
+    cy.wrap(subject)
+        .find('option')
+        .then(options => {
+            const items = options.toArray().slice(1);
+            const randomOption = Cypress._.sample(items);
+            cy.wrap(subject).select(randomOption.value);
         });
 });
